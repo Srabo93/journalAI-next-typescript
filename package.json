@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "dev": "next dev",
+    "db:push": "npx prisma db push",
+    "db:pull": "npx prisma db pull",
+    "db:studio": "npx prisma studio",
     "lint": "next lint",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore ."
