@@ -1,3 +1,4 @@
+import { analyze } from "@/util/ai";
 import { getUserByClerkID } from "@/util/auth";
 import prisma from "@/util/db";
 import { NextResponse } from "next/server";
@@ -20,5 +21,29 @@ export const PATCH = async (
       content,
     },
   });
+
+  let analysis = await analyze(updatedEntry.content);
+
+  if (!analysis) {
+    analysis = {
+      summary: "",
+      mood: "",
+      negative: false,
+      subject: "",
+      color: "#FFF",
+    };
+  }
+
+  await prisma.analysis.upsert({
+    where: {
+      entryId: updatedEntry.id,
+    },
+    create: {
+      entryId: updatedEntry.id,
+      ...analysis,
+    },
+    update: analysis,
+  });
+
   return NextResponse.json({ data: updatedEntry });
 };

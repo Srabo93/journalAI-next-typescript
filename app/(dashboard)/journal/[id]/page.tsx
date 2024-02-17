@@ -22,11 +22,11 @@ const getEntry = async (id: string) => {
 
 const EntryPage = async ({ params }: { params: { id: string } }) => {
   const entry = await getEntry(params.id);
-  const { mood, summary, subject, color, negative } = entry?.analysis;
+
+  const { mood, summary, color, negative } = entry?.analysis || {};
 
   const analysisData = [
     { name: "Summary", value: summary },
-    { name: "Subject", value: subject },
     { name: "Mood", value: mood },
     { name: "Negative", value: negative ? "True" : "False" },
   ];
