@@ -19,6 +19,7 @@ const getEntries = async () => {
 
   return entries;
 };
+
 const JournalPage = async () => {
   const entries: JournalEntry[] = await getEntries();
   return (

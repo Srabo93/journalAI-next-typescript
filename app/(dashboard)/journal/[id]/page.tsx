@@ -12,17 +12,23 @@ const getEntry = async (id: string) => {
       userId: user.id,
       id,
     },
+    include: {
+      analysis: true,
+    },
   });
 
   return entry;
 };
+
 const EntryPage = async ({ params }: { params: { id: string } }) => {
   const entry = await getEntry(params.id);
+  const { mood, summary, subject, color, negative } = entry?.analysis;
+
   const analysisData = [
-    { name: "Summary", value: "" },
-    { name: "Subject", value: "" },
-    { name: "Mood", value: "" },
-    { name: "Negative", value: false },
+    { name: "Summary", value: summary },
+    { name: "Subject", value: subject },
+    { name: "Mood", value: mood },
+    { name: "Negative", value: negative ? "True" : "False" },
   ];
 
   return (
@@ -31,7 +37,7 @@ const EntryPage = async ({ params }: { params: { id: string } }) => {
         <Editor entry={entry as JournalEntry} />
       </div>
       <div className="col-span-1 border-l border-black/10">
-        <div className="bg-blue-300 px-6 py-10">
+        <div className="px-6 py-10" style={{ backgroundColor: color }}>
           <h2 className="text-2xl">Analysis</h2>
         </div>
         <div>
@@ -39,10 +45,10 @@ const EntryPage = async ({ params }: { params: { id: string } }) => {
             {analysisData.map((item) => (
               <li
                 key={item.name}
-                className="flex items-center justify-between border-t border-black/10 px-2 py-4"
+                className="flex flex-col items-start border-t border-black/10 px-2 py-4"
               >
                 <span className="text-lg font-semibold">{item.name}</span>
-                <span className="text-lg font-semibold">{item.value}</span>
+                <span className="text-md">{item.value}</span>
               </li>
             ))}
           </ul>

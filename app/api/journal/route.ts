@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getUserByClerkID } from "@/util/auth";
 import prisma from "@/util/db";
 import { revalidatePath } from "next/cache";
+import { analyze } from "@/util/ai";
 
 export const POST = async () => {
   const user = await getUserByClerkID();
@@ -11,6 +12,17 @@ export const POST = async () => {
     data: {
       userId: user.id,
       content: "Write about your day! Amazing!",
+    },
+  });
+
+  const analysis = await analyze(entry.content);
+
+  if (!analysis) return;
+
+  await prisma.analysis.create({
+    data: {
+      entryId: entry.id,
+      ...analysis,
     },
   });
 
