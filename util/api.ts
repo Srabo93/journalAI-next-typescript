@@ -1,3 +1,5 @@
+import { Analysis, JournalEntry } from "@prisma/client";
+
 const createURL = (path: string) => {
   return window.location.origin + path;
 };
@@ -15,7 +17,10 @@ export const createNewEntry = async () => {
   }
 };
 
-export const updateEntry = async (id: string, content: string) => {
+export const updateEntry = async (
+  id: string,
+  content: string,
+): Promise<(JournalEntry & { analysis?: Analysis }) | undefined> => {
   const res = await fetch(
     new Request(createURL(`/api/journal/${id}`), {
       method: "PATCH",

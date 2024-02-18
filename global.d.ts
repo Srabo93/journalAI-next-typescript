@@ -1,5 +1,5 @@
-import { JournalEntry } from "@prisma/client";
+import { Analysis, JournalEntry } from "@prisma/client";
 
 type EntryProps = {
-  entry: JournalEntry;
+  entry: JournalEntry & { analysis?: Analysis };
 };
