@@ -1,7 +1,6 @@
 import EntryCard from "@/components/EntryCard";
 import NewEntryCard from "@/components/NewEntryCard";
 import { getUserByClerkID } from "@/util/auth";
-import { JournalEntry } from "@prisma/client";
 import prisma from "@/util/db";
 import Link from "next/link";
 import Question from "@/components/Question";
@@ -13,6 +12,9 @@ const getEntries = async () => {
     where: {
       userId: user?.id,
     },
+    include: {
+      analysis: true,
+    },
     orderBy: {
       createdAt: "desc",
     },
@@ -22,7 +24,8 @@ const getEntries = async () => {
 };
 
 const JournalPage = async () => {
-  const entries: JournalEntry[] = await getEntries();
+  const entries = await getEntries();
+
   return (
     <div className=" bg-zinc-400/10 p-5">
       <h2 className="mb-8 text-3xl">Journal</h2>
@@ -31,7 +34,7 @@ const JournalPage = async () => {
       </div>
       <div className="grid grid-cols-3 gap-4">
         <NewEntryCard />
-        {entries.map((entry: JournalEntry) => (
+        {entries.map((entry) => (
           <Link href={`/journal/${entry.id}`} key={entry.id}>
             <EntryCard entry={entry} />
           </Link>
