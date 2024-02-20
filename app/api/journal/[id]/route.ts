@@ -1,6 +1,7 @@
 import { analyze } from "@/util/ai";
 import { getUserByClerkID } from "@/util/auth";
 import prisma from "@/util/db";
+import { Prisma } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export const PATCH = async (
@@ -24,24 +25,17 @@ export const PATCH = async (
 
   let analysis = await analyze(updatedEntry.content);
 
-  if (!analysis) {
-    analysis = {
-      summary: "",
-      mood: "",
-      negative: false,
-      subject: "",
-      color: "#FFF",
-    };
-  }
+  if (!analysis) return;
 
   const updatedAnalysis = await prisma.analysis.upsert({
     where: {
       entryId: updatedEntry.id,
     },
     create: {
+      userId: user.id,
       entryId: updatedEntry.id,
       ...analysis,
-    },
+    } as Prisma.AnalysisCreateManyInput,
     update: analysis,
   });
 

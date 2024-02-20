@@ -3,6 +3,7 @@ import { getUserByClerkID } from "@/util/auth";
 import prisma from "@/util/db";
 import { revalidatePath } from "next/cache";
 import { analyze } from "@/util/ai";
+import { Prisma } from "@prisma/client";
 
 export const POST = async () => {
   const user = await getUserByClerkID();
@@ -21,9 +22,10 @@ export const POST = async () => {
 
   await prisma.analysis.create({
     data: {
+      userId: user.id,
       entryId: entry.id,
       ...analysis,
-    },
+    } as Prisma.AnalysisCreateManyInput,
   });
 
   revalidatePath("/journal");

@@ -1,4 +1,3 @@
-import Analysis from "@/components/Analysis";
 import Editor from "@/components/Editor";
 import { getUserByClerkID } from "@/util/auth";
 import prisma from "@/util/db";
