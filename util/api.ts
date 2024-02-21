@@ -1,5 +1,6 @@
 import { Analysis, JournalEntry } from "@prisma/client";
 
+//TODO:Well turns out if using Serveractions u can revalidate routes, guess time to rework this already
 const createURL = (path: string) => {
   return window.location.origin + path;
 };
