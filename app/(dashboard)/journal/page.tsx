@@ -1,9 +1,9 @@
-import EntryCard from "@/components/EntryCard";
-import NewEntryCard from "@/components/NewEntryCard";
+import EntryCard from "./EntryCard";
+import NewEntryCard from "./NewEntryCard";
 import { getUserByClerkID } from "@/util/auth";
 import prisma from "@/util/db";
 import Link from "next/link";
-import Question from "@/components/Question";
+import Question from "./Question";
 import { Analysis, JournalEntry } from "@prisma/client";
 
 const getEntries = async () => {

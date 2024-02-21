@@ -1,14 +1,14 @@
 "use client";
 
-import { createNewEntry } from "@/util/api";
+import { createNewEntry } from "@/app/(dashboard)/journal/actions";
 import { useRouter } from "next/navigation";
 
 const NewEntryCard = () => {
   const router = useRouter();
 
   const handleOnClick = async () => {
-    const data = await createNewEntry();
-    router.push(`/journal/${data.id}`);
+    const newEntry = await createNewEntry();
+    router.push(`/journal/${newEntry?.id}`);
   };
 
   return (

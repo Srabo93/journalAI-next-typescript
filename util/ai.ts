@@ -65,7 +65,7 @@ export const analyze = async (content: string) => {
 export const qa = async (
   question: string,
   entries: Partial<JournalEntry>[],
-): Promise<ChainValues> => {
+): Promise<string> => {
   const docs = entries.map((entry) => {
     return new Document({
       pageContent: entry.content as string,

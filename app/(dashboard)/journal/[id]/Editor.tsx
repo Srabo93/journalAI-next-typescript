@@ -1,6 +1,6 @@
 "use client";
 import { EntryProps } from "@/global";
-import { updateEntry } from "@/util/api";
+import { updateEntry } from "@/app/(dashboard)/journal/actions";
 import { Analysis } from "@prisma/client";
 import { useState } from "react";
 import { useAutosave } from "react-autosave";
