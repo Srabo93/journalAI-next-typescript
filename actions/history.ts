@@ -2,7 +2,6 @@
 import { qa } from "@/util/ai";
 import { getUserByClerkID } from "@/util/auth";
 import prisma from "@/util/db";
-import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 export const askQuestion = async (question: string) => {

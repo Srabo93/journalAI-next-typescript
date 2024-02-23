@@ -1,6 +1,6 @@
 "use client";
 
-import { createNewEntry } from "@/app/(dashboard)/journal/actions";
+import { createNewEntry } from "@/actions/journal";
 import { useRouter } from "next/navigation";
 
 const NewEntryCard = () => {

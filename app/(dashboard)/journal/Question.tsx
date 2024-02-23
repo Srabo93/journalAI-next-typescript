@@ -1,6 +1,6 @@
 "use client";
 
-import { askQuestion } from "@/app/(dashboard)/history/actions";
+import { askQuestion } from "@/actions/history";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 const Question = () => {

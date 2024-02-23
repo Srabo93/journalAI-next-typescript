@@ -3,7 +3,6 @@ import Link from "next/link";
 import { PropsWithChildren } from "react";
 
 const links = [
-  { href: "/", label: "Home" },
   { href: "/journal", label: "Journal" },
   { href: "/history", label: "History" },
 ];
