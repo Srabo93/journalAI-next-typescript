@@ -1,5 +1,7 @@
+import { Skeleton } from "@/components/ui/skeleton";
+
 const Loading = () => {
-  return <div>OLALALAL</div>;
+  return <Skeleton className="h-full w-full bg-slate-400/20" />;
 };
 
 export default Loading;

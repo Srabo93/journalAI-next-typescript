@@ -1,4 +1,4 @@
-import Editor from "./Editor";
+import Editor from "@/components/journal/Editor";
 import { getUserByClerkID } from "@/util/auth";
 import prisma from "@/util/db";
 import { JournalEntry } from "@prisma/client";

@@ -1,3 +1,4 @@
+import Navigation from "@/components/Navigation";
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { PropsWithChildren } from "react";
@@ -10,14 +11,8 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
   return (
     <div className="flex h-screen">
       <aside className="w-1/4 border-r border-black/10 md:w-1/5 lg:w-1/6">
-        <div className="mx-2 my-2 text-xl">JournalAI</div>
-        <ul>
-          {links.map((link) => (
-            <li key={link.label} className="mx-2 my-2 text-lg">
-              <Link href={link.href}>{link.label}</Link>
-            </li>
-          ))}
-        </ul>
+        <div className="mx-2 my-2 text-2xl font-bold">JournalAI</div>
+        <Navigation />
       </aside>
       <div className="flex flex-1 flex-col">
         <header className="h-16 border-b border-black/10 md:h-20">

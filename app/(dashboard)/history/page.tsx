@@ -1,4 +1,4 @@
-import HistoryChart from "./HistoryChart";
+import HistoryChart from "@/components/history/HistoryChart";
 import { getUserByClerkID } from "@/util/auth";
 import prisma from "@/util/db";
 import { Prisma } from "@prisma/client";
