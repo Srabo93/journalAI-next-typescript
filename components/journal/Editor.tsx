@@ -4,6 +4,7 @@ import { EntryProps } from "@/global";
 import { Analysis } from "@prisma/client";
 import { useState } from "react";
 import { useAutosave } from "react-autosave";
+import { ImSpinner8 } from "react-icons/im";
 
 const Editor = ({ entry }: EntryProps) => {
   const [value, setValue] = useState(entry.content);
@@ -33,7 +34,14 @@ const Editor = ({ entry }: EntryProps) => {
     <div className="grid h-full w-full grid-cols-3 gap-2">
       <div className="col-span-3 md:col-span-2">
         <div className="rounded shadow-lg sm:h-full sm:w-full md:m-5 md:h-5/6 md:w-5/6">
-          {isSaving && <div>...saving</div>}
+          {isSaving && (
+            <ImSpinner8
+              size="3em"
+              title="saving entry"
+              color="blue"
+              className="m-auto my-3 animate-spin"
+            />
+          )}
           <textarea
             className="h-full w-full p-8 text-xl"
             value={value}
