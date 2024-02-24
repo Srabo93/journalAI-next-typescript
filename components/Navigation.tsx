@@ -21,7 +21,7 @@ const Navigation = () => {
   return (
     <>
       {!open && (
-        <aside className="hidden w-14 border-r border-black/10 md:block">
+        <aside className="hidden w-auto border-r border-black/10 md:block">
           <div className="mx-2 my-2 flex items-center justify-between text-2xl font-bold">
             {!open && (
               <RxHamburgerMenu
@@ -35,7 +35,7 @@ const Navigation = () => {
         </aside>
       )}
       {open && (
-        <aside className="hidden w-1/4 border-r border-black/10 md:block md:w-1/5 lg:w-1/6">
+        <aside className="hidden w-auto border-r border-black/10 md:block">
           <div className="mx-2 my-2 flex items-center justify-between text-2xl font-bold">
             {open && (
               <RxPinLeft
