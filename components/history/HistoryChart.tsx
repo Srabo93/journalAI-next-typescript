@@ -62,8 +62,8 @@ const HistoryChart = ({ data }: { data: Analysis[] }) => {
   });
 
   return (
-    <ResponsiveContainer>
-      <LineChart width={300} height={100} data={formattedData}>
+    <ResponsiveContainer width="100%" height="100%">
+      <LineChart data={formattedData}>
         <Line
           dataKey="sentimentScore"
           type="monotone"

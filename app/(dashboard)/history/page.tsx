@@ -34,7 +34,7 @@ const History = async () => {
   return (
     <div className="h-full w-full">
       <div>{`Avg. Sentiment ${analysis?.avg}`}</div>
-      <div className="h-4/6 w-4/6">
+      <div className="sm:h-full sm:w-full md:h-4/6 md:w-4/6">
         <HistoryChart data={analysis?.analysis} />
       </div>
     </div>
