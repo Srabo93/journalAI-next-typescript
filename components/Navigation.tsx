@@ -42,7 +42,7 @@ const Navigation = () => {
                 size="1.5em"
                 title="close menu"
                 onClick={() => setOpen(false)}
-                className="hover:cursor-pointer"
+                className="ml-auto self-end hover:cursor-pointer"
               />
             )}
           </div>
