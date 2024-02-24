@@ -31,8 +31,8 @@ const Editor = ({ entry }: EntryProps) => {
 
   return (
     <div className="grid h-full w-full grid-cols-3 gap-2">
-      <div className="col-span-2">
-        <div className="m-5 h-5/6 w-5/6 rounded shadow-lg">
+      <div className="col-span-3 md:col-span-2">
+        <div className="rounded shadow-lg sm:h-full sm:w-full md:m-5 md:h-5/6 md:w-5/6">
           {isSaving && <div>...saving</div>}
           <textarea
             className="h-full w-full p-8 text-xl"
@@ -41,7 +41,7 @@ const Editor = ({ entry }: EntryProps) => {
           />
         </div>
       </div>
-      <div className="col-span-1 border-l border-black/10">
+      <div className="col-span-3 border-l  border-black/10 md:col-span-1">
         <div className="px-6 py-10" style={{ backgroundColor: color }}>
           <h2 className="text-2xl">Analysis</h2>
         </div>
