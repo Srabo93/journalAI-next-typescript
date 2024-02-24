@@ -1,22 +1,17 @@
 import Navigation from "@/components/Navigation";
+import NavigationMobile from "@/components/NavigationMobile";
 import { UserButton } from "@clerk/nextjs";
-import Link from "next/link";
 import { PropsWithChildren } from "react";
 
-const links = [
-  { href: "/journal", label: "Journal" },
-  { href: "/history", label: "History" },
-];
 const DashboardLayout = ({ children }: PropsWithChildren) => {
   return (
-    <div className="flex h-screen">
-      <aside className="w-1/4 border-r border-black/10 md:w-1/5 lg:w-1/6">
-        <div className="mx-2 my-2 text-2xl font-bold">JournalAI</div>
-        <Navigation />
-      </aside>
+    <div className="h-screen sm:flex-row md:flex">
+      <Navigation />
       <div className="flex flex-1 flex-col">
-        <header className="h-16 border-b border-black/10 md:h-20">
-          <div className="flex h-full w-full items-center justify-end px-6 py-4">
+        <header className="border-b  border-black/10 sm:h-auto md:h-20">
+          <div className="flex h-full w-full items-center justify-between px-6  py-4">
+            <h3 className="hidden pr-2 text-3xl md:inline-block">JournalAI</h3>
+            <NavigationMobile />
             <UserButton />
           </div>
         </header>
