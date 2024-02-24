@@ -9,14 +9,10 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { RxPinLeft, RxHamburgerMenu } from "react-icons/rx";
+import { NavigationProps } from "@/global";
 
-const Navigation = () => {
+const Navigation = ({ links }: NavigationProps) => {
   const [open, setOpen] = useState(true);
-
-  const links = [
-    { href: "/journal", label: "Journal" },
-    { href: "/history", label: "History" },
-  ];
 
   return (
     <>

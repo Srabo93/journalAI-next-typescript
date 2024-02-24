@@ -6,21 +6,20 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { NavigationProps } from "@/global";
 import Link from "next/link";
 import { useState } from "react";
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
 
-const NavigationMobile = () => {
+const NavigationMobile = ({ links }: NavigationProps) => {
   const [open, setOpen] = useState(false);
 
-  const links = [
-    { href: "/journal", label: "Journal" },
-    { href: "/history", label: "History" },
-  ];
   return (
-    <div className="
+    <div
+      className="
        md:hidden
-      ">
+      "
+    >
       {!open && (
         <RxHamburgerMenu
           size="2em"
