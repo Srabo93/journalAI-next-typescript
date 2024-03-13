@@ -8,15 +8,15 @@ const EntryCard = ({
     <div className="divide-y divide-gray-200 overflow-hidden rounded bg-white shadow">
       <div className="px-4 py-5">
         <span className="font-bold">Created: </span>
-        {entry.createdAt?.toLocaleString()}
+        <span>{entry.createdAt?.toLocaleString()}</span>
       </div>
       <div className="min-h-28 px-4 py-5">
         <span className="font-bold">Summary: </span>
-        {entry.analysis?.summary}
+        <span>{entry.analysis?.summary}</span>
       </div>
       <div className="px-4 py-5">
         <span className="font-bold">Mood: </span>
-        {entry.analysis?.mood}
+        <span>{entry.analysis?.mood}</span>
       </div>
     </div>
   );

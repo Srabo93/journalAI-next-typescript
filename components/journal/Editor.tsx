@@ -1,12 +1,25 @@
 "use client";
-import { updateEntry } from "@/actions/journal";
+import { deleteEntry, updateEntry } from "@/actions/journal";
 import { EntryProps } from "@/global";
 import { Analysis } from "@prisma/client";
 import { useState } from "react";
 import { useAutosave } from "react-autosave";
 import { ImSpinner8 } from "react-icons/im";
+import { RxTrash } from "react-icons/rx";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { useRouter } from "next/navigation";
 
 const Editor = ({ entry }: EntryProps) => {
+  const router = useRouter();
   const [value, setValue] = useState(entry.content);
   const [isSaving, setIsSaving] = useState(false);
   const [analysis, setAnalysis] = useState(entry.analysis);
@@ -29,6 +42,12 @@ const Editor = ({ entry }: EntryProps) => {
       setIsSaving(false);
     },
   });
+
+  const onDeleteHandler = (id: string) => {
+    deleteEntry(id);
+    router.push("/journal");
+    return;
+  };
 
   return (
     <div className="grid h-full w-full grid-cols-3 gap-2">
@@ -64,6 +83,29 @@ const Editor = ({ entry }: EntryProps) => {
                 <span className="text-md">{item.value}</span>
               </li>
             ))}
+            <li className="flex flex-col items-start border-t border-black/10 px-2 py-4">
+              <AlertDialog>
+                <AlertDialogTrigger>
+                  <RxTrash size={50} color="red" />
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      Do you want to delete this entry?
+                    </AlertDialogTitle>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction
+                      color="red"
+                      onClick={() => onDeleteHandler(entry.id)}
+                    >
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </li>
           </ul>
         </div>
       </div>

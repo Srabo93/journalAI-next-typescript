@@ -76,3 +76,20 @@ export const updateEntry = async (id: string, content: string) => {
     throw new Error(`Error while updating Analysis: ${error}`);
   }
 };
+
+export const deleteEntry = async (id: string) => {
+  const user = await getUserByClerkID();
+  if (!user) return;
+
+  try {
+    await prisma.journalEntry.delete({
+      where: {
+        id,
+      },
+    });
+
+    revalidatePath("/journal", "page");
+  } catch (error) {
+    throw new Error(`Error while deleting entry: ${error}`);
+  }
+};
