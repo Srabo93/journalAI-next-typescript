@@ -49,7 +49,7 @@ const CustomToolTip = ({
   return null;
 };
 
-const HistoryChart = ({ data }: { data: Analysis[] }) => {
+const SentimentChart = ({ data }: { data: Analysis[] }) => {
   const formattedData = data.map((dataset) => {
     return {
       ...dataset,
@@ -73,7 +73,7 @@ const HistoryChart = ({ data }: { data: Analysis[] }) => {
         />
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="formattedDate" />
-        <YAxis />
+        <YAxis label={{ value: "Score", angle: -90, position: "insideLeft" }} />
         <ReferenceLine y={0} label="Neutral" stroke="lime" />
         <Tooltip content={<CustomToolTip />} />
       </LineChart>
@@ -81,4 +81,4 @@ const HistoryChart = ({ data }: { data: Analysis[] }) => {
   );
 };
 
-export default HistoryChart;
+export default SentimentChart;

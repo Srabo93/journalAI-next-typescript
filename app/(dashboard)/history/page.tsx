@@ -1,4 +1,5 @@
-import HistoryChart from "@/components/history/HistoryChart";
+import MoodChart from "@/components/history/MoodChart";
+import SentimentChart from "@/components/history/SentimentChart";
 import { getUserByClerkID } from "@/util/auth";
 import prisma from "@/util/db";
 import { Prisma } from "@prisma/client";
@@ -32,10 +33,14 @@ const History = async () => {
   if (!analysis) return;
 
   return (
-    <div className="h-full w-full">
+    <div className="flex h-full w-full flex-col">
       <h2 className="text-2xl font-semibold">{`Avg. Sentiment: ${analysis?.avg}`}</h2>
+      <div className="my-5 sm:h-full sm:w-full md:h-4/6 md:w-4/6">
+        <SentimentChart data={analysis?.analysis} />
+      </div>
+      <h2 className="text-2xl font-semibold">Mood Analysis</h2>
       <div className="mt-5 sm:h-full sm:w-full md:h-4/6 md:w-4/6">
-        <HistoryChart data={analysis?.analysis} />
+        <MoodChart data={analysis?.analysis} />
       </div>
     </div>
   );
