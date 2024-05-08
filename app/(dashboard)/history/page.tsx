@@ -1,4 +1,5 @@
 import MoodChart from "@/components/history/MoodChart";
+import MoodTrackingChart from "@/components/history/MoodTrackingChart";
 import SentimentChart from "@/components/history/SentimentChart";
 import { getUserByClerkID } from "@/util/auth";
 import prisma from "@/util/db";
@@ -33,16 +34,20 @@ const History = async () => {
   if (!analysis) return;
 
   return (
-    <div className="flex h-full w-full flex-col">
-      <h2 className="text-2xl font-semibold">{`Avg. Sentiment: ${analysis?.avg}`}</h2>
-      <div className="my-5 sm:h-full sm:w-full md:h-4/6 md:w-4/6">
+    <>
+      <div className="h-96 w-full">
+        <h2 className="py-3 text-2xl font-semibold">{`Avg. Sentiment: ${analysis?.avg}`}</h2>
         <SentimentChart data={analysis?.analysis} />
       </div>
-      <h2 className="text-2xl font-semibold">Mood Analysis</h2>
-      <div className="mt-5 sm:h-full sm:w-full md:h-4/6 md:w-4/6">
+      <div className="h-96 w-full">
+        <h2 className="py-3 text-2xl font-semibold">Mood Analysis</h2>
         <MoodChart data={analysis?.analysis} />
       </div>
-    </div>
+      <div className="h-96 w-full">
+        <h2 className="py-3 text-2xl font-semibold">Mood Tracking</h2>
+        <MoodTrackingChart data={analysis?.analysis} />
+      </div>
+    </>
   );
 };
 

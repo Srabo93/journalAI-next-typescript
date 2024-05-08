@@ -9,4 +9,5 @@ Mood Tracking:
 
 Mental Lab:
 
-- set personal goals and track the progress over time. app should provide reminders, motivational messages, app should offer roadmaps for goals to be checked.
+- set personal goals and track the progress over time.
+  App should provide reminders, motivational messages, app should offer roadmaps for goals to be checked.
